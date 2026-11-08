@@ -1,0 +1,1077 @@
+{
+  "applicationName": "Maintenance control",
+  "applicationType": 1,
+  "applicationDSL": {
+    "ui": {
+      "layout": {
+        "appHeading": {
+          "i": "appHeading",
+          "x": 0,
+          "y": 0,
+          "w": 17,
+          "h": 12
+        },
+        "workspaceBadge": {
+          "i": "workspaceBadge",
+          "x": 17,
+          "y": 1,
+          "w": 7,
+          "h": 10
+        },
+        "assets": {
+          "i": "assets",
+          "x": 0,
+          "y": 13,
+          "w": 8,
+          "h": 17
+        },
+        "attention": {
+          "i": "attention",
+          "x": 8,
+          "y": 13,
+          "w": 8,
+          "h": 17
+        },
+        "assigned": {
+          "i": "assigned",
+          "x": 16,
+          "y": 13,
+          "w": 8,
+          "h": 17
+        },
+        "queueHeading": {
+          "i": "queueHeading",
+          "x": 0,
+          "y": 31,
+          "w": 15,
+          "h": 6
+        },
+        "maintenanceQueue": {
+          "i": "maintenanceQueue",
+          "x": 0,
+          "y": 38,
+          "w": 15,
+          "h": 32
+        },
+        "requestHeading": {
+          "i": "requestHeading",
+          "x": 16,
+          "y": 31,
+          "w": 8,
+          "h": 6
+        },
+        "assetReference": {
+          "i": "assetReference",
+          "x": 16,
+          "y": 38,
+          "w": 8,
+          "h": 9
+        },
+        "requestPriority": {
+          "i": "requestPriority",
+          "x": 16,
+          "y": 48,
+          "w": 8,
+          "h": 9
+        },
+        "requestOwner": {
+          "i": "requestOwner",
+          "x": 16,
+          "y": 58,
+          "w": 8,
+          "h": 9
+        },
+        "scheduleInspection": {
+          "i": "scheduleInspection",
+          "x": 16,
+          "y": 70,
+          "w": 8,
+          "h": 6
+        },
+        "boundary": {
+          "i": "boundary",
+          "x": 0,
+          "y": 73,
+          "w": 15,
+          "h": 9
+        },
+        "sampleNote": {
+          "i": "sampleNote",
+          "x": 0,
+          "y": 84,
+          "w": 24,
+          "h": 8
+        }
+      },
+      "items": {
+        "appHeading": {
+          "compType": "text",
+          "comp": {
+            "text": "## Maintenance control\n\nGive every maintenance request an owner and a next step.",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "margin": "2px",
+              "padding": "6px",
+              "text": "#30243e",
+              "textSize": "14px",
+              "textWeight": "500",
+              "radius": "10px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "appHeading"
+        },
+        "workspaceBadge": {
+          "compType": "text",
+          "comp": {
+            "text": "**INTERNAL OPERATIONS**\n\nSample app · editable",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "background": "#f0e8f5",
+              "margin": "2px",
+              "padding": "5px",
+              "text": "#744391",
+              "textSize": "12px",
+              "radius": "10px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "workspaceBadge"
+        },
+        "assets": {
+          "compType": "text",
+          "comp": {
+            "text": "**Assets in service**\n\n## 128\n\nAcross three facilities",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "background": "#ffffff",
+              "margin": "2px",
+              "padding": "7px",
+              "text": "#30243e",
+              "textSize": "14px",
+              "border": "#e8deee",
+              "radius": "10px",
+              "borderWidth": "1px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "assets"
+        },
+        "attention": {
+          "compType": "text",
+          "comp": {
+            "text": "**Need attention**\n\n## 04\n\nPrioritise the next inspection",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "background": "#ffffff",
+              "margin": "2px",
+              "padding": "7px",
+              "text": "#30243e",
+              "textSize": "14px",
+              "border": "#e8deee",
+              "radius": "10px",
+              "borderWidth": "1px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "attention"
+        },
+        "assigned": {
+          "compType": "text",
+          "comp": {
+            "text": "**Requests assigned**\n\n## 12 / 14\n\nTwo requests need an owner",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "background": "#ffffff",
+              "margin": "2px",
+              "padding": "7px",
+              "text": "#30243e",
+              "textSize": "14px",
+              "border": "#e8deee",
+              "radius": "10px",
+              "borderWidth": "1px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "assigned"
+        },
+        "queueHeading": {
+          "compType": "text",
+          "comp": {
+            "text": "### Maintenance queue",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "margin": "2px",
+              "padding": "5px",
+              "text": "#30243e",
+              "textSize": "14px",
+              "radius": "10px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "queueHeading"
+        },
+        "maintenanceQueue": {
+          "compType": "table",
+          "comp": {
+            "showRowGridBorder": true,
+            "showHRowGridBorder": true,
+            "autoHeight": "fixed",
+            "data": "[{\"Asset\":\"Conveyor A-12\",\"Location\":\"North plant\",\"Priority\":\"High\",\"Owner\":\"Maya\"},{\"Asset\":\"Pump P-08\",\"Location\":\"East plant\",\"Priority\":\"Routine\",\"Owner\":\"Leon\"},{\"Asset\":\"HVAC H-03\",\"Location\":\"Office\",\"Priority\":\"Routine\",\"Owner\":\"Sam\"},{\"Asset\":\"Scanner S-17\",\"Location\":\"Dispatch\",\"Priority\":\"Review\",\"Owner\":\"Unassigned\"}]",
+            "columns": [
+              {
+                "title": "Asset",
+                "showTitle": true,
+                "isCustom": false,
+                "dataIndex": "Asset",
+                "filterable": false,
+                "width": "140",
+                "autoWidth": "fixed",
+                "render": {
+                  "compType": "text",
+                  "comp": {
+                    "text": "{{currentCell}}"
+                  }
+                },
+                "align": "left",
+                "fixed": "close",
+                "background": "",
+                "margin": "",
+                "text": "",
+                "border": "",
+                "borderWidth": "",
+                "radius": "",
+                "textSize": "",
+                "textWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontStyle": "normal",
+                "textOverflow": "wrap",
+                "linkColor": "#3377ff",
+                "linkHoverColor": "",
+                "linkActiveColor": "",
+                "summaryColumns": [
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  },
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  },
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  }
+                ]
+              },
+              {
+                "title": "Location",
+                "showTitle": true,
+                "isCustom": false,
+                "dataIndex": "Location",
+                "filterable": false,
+                "width": "105",
+                "autoWidth": "fixed",
+                "render": {
+                  "compType": "text",
+                  "comp": {
+                    "text": "{{currentCell}}"
+                  }
+                },
+                "align": "left",
+                "fixed": "close",
+                "background": "",
+                "margin": "",
+                "text": "",
+                "border": "",
+                "borderWidth": "",
+                "radius": "",
+                "textSize": "",
+                "textWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontStyle": "normal",
+                "textOverflow": "wrap",
+                "linkColor": "#3377ff",
+                "linkHoverColor": "",
+                "linkActiveColor": "",
+                "summaryColumns": [
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  },
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  },
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  }
+                ]
+              },
+              {
+                "title": "Priority",
+                "showTitle": true,
+                "isCustom": false,
+                "dataIndex": "Priority",
+                "filterable": false,
+                "width": "105",
+                "autoWidth": "fixed",
+                "render": {
+                  "compType": "tag",
+                  "comp": {
+                    "text": "{{currentCell}}",
+                    "tagColors": {
+                      "optionType": "manual",
+                      "manual": {
+                        "manual": [
+                          {
+                            "label": "Tag1",
+                            "icon": "/icon:solid/tag",
+                            "colorType": "preset",
+                            "presetColor": "blue",
+                            "color": "#1890ff",
+                            "textColor": "#ffffff",
+                            "border": "",
+                            "radius": "",
+                            "margin": "",
+                            "padding": ""
+                          },
+                          {
+                            "label": "Tag2",
+                            "icon": "/icon:solid/tag",
+                            "colorType": "preset",
+                            "presetColor": "green",
+                            "color": "#1890ff",
+                            "textColor": "#ffffff",
+                            "border": "",
+                            "radius": "",
+                            "margin": "",
+                            "padding": ""
+                          }
+                        ]
+                      },
+                      "mapData": {
+                        "data": "[]",
+                        "mapData": {
+                          "colorType": "preset",
+                          "presetColor": "blue",
+                          "color": "#1890ff",
+                          "textColor": "#ffffff",
+                          "border": "",
+                          "radius": "",
+                          "margin": "",
+                          "padding": ""
+                        }
+                      }
+                    }
+                  }
+                },
+                "align": "left",
+                "fixed": "close",
+                "background": "",
+                "margin": "",
+                "text": "",
+                "border": "",
+                "borderWidth": "",
+                "radius": "",
+                "textSize": "",
+                "textWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontStyle": "normal",
+                "textOverflow": "wrap",
+                "linkColor": "#3377ff",
+                "linkHoverColor": "",
+                "linkActiveColor": "",
+                "summaryColumns": [
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  },
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  },
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  }
+                ]
+              },
+              {
+                "title": "Owner",
+                "showTitle": true,
+                "isCustom": false,
+                "dataIndex": "Owner",
+                "filterable": false,
+                "width": "105",
+                "autoWidth": "fixed",
+                "render": {
+                  "compType": "text",
+                  "comp": {
+                    "text": "{{currentCell}}"
+                  }
+                },
+                "align": "left",
+                "fixed": "close",
+                "background": "",
+                "margin": "",
+                "text": "",
+                "border": "",
+                "borderWidth": "",
+                "radius": "",
+                "textSize": "",
+                "textWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontStyle": "normal",
+                "textOverflow": "wrap",
+                "linkColor": "#3377ff",
+                "linkHoverColor": "",
+                "linkActiveColor": "",
+                "summaryColumns": [
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  },
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  },
+                  {
+                    "isCustom": false,
+                    "dataIndex": "",
+                    "render": {
+                      "compType": "text",
+                      "comp": {}
+                    },
+                    "align": "left",
+                    "background": "",
+                    "margin": "",
+                    "text": "",
+                    "border": "",
+                    "radius": "",
+                    "textSize": "",
+                    "textWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    "fontStyle": "normal",
+                    "textOverflow": "wrap",
+                    "linkColor": "#3377ff",
+                    "linkHoverColor": "",
+                    "linkActiveColor": ""
+                  }
+                ]
+              }
+            ],
+            "size": "middle",
+            "selection": {
+              "mode": "single"
+            },
+            "pagination": {
+              "changeablePageSize": null,
+              "pageSize": "5",
+              "pageSizeOptions": "[5, 10, 20, 50]"
+            },
+            "sort": [],
+            "toolbar": {
+              "position": "below",
+              "columnSeparator": ",",
+              "showUpdateButtons": true
+            },
+            "summaryRows": "1",
+            "hideToolbar": false,
+            "rowAutoHeight": "auto",
+            "tableAutoHeight": "auto",
+            "expansion": {
+              "slot": {
+                "container": {
+                  "layout": {}
+                }
+              }
+            },
+            "editModeClicks": "single",
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "maintenanceQueue"
+        },
+        "requestHeading": {
+          "compType": "text",
+          "comp": {
+            "text": "### Plan the next action",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "margin": "2px",
+              "padding": "5px",
+              "text": "#30243e",
+              "textSize": "14px",
+              "radius": "10px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "requestHeading"
+        },
+        "assetReference": {
+          "compType": "input",
+          "comp": {
+            "defaultValue": "Conveyor A-12",
+            "value": "",
+            "label": {
+              "text": "Asset reference",
+              "width": "33",
+              "widthUnit": "%",
+              "position": "column",
+              "align": "left"
+            },
+            "placeholder": "Asset reference",
+            "validationType": "Text",
+            "inputFieldStyle": {
+              "border": "#ded5e5",
+              "radius": "7px"
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "assetReference"
+        },
+        "requestPriority": {
+          "compType": "select",
+          "comp": {
+            "label": {
+              "text": "Priority",
+              "width": "33",
+              "widthUnit": "%",
+              "position": "column",
+              "align": "left"
+            },
+            "options": {
+              "optionType": "manual",
+              "manual": {
+                "manual": [
+                  {
+                    "value": "High",
+                    "label": "High"
+                  },
+                  {
+                    "value": "Routine",
+                    "label": "Routine"
+                  },
+                  {
+                    "value": "Review",
+                    "label": "Review"
+                  }
+                ]
+              },
+              "mapData": {
+                "data": "[]"
+              }
+            },
+            "showSearch": true,
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "defaultValue": "High",
+            "value": "",
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "requestPriority"
+        },
+        "requestOwner": {
+          "compType": "input",
+          "comp": {
+            "defaultValue": "Maya",
+            "value": "",
+            "label": {
+              "text": "Assign to",
+              "width": "33",
+              "widthUnit": "%",
+              "position": "column",
+              "align": "left"
+            },
+            "placeholder": "Assign to",
+            "validationType": "Text",
+            "inputFieldStyle": {
+              "border": "#ded5e5",
+              "radius": "7px"
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "requestOwner"
+        },
+        "scheduleInspection": {
+          "compType": "button",
+          "comp": {
+            "text": "Schedule inspection",
+            "type": "",
+            "form": "",
+            "style": {
+              "background": "#744391",
+              "text": "#ffffff",
+              "radius": "8px"
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "scheduleInspection"
+        },
+        "boundary": {
+          "compType": "text",
+          "comp": {
+            "text": "**Deployment idea** · A single interface for teams using your internal asset and service data.",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "background": "#f0e8f5",
+              "margin": "2px",
+              "padding": "5px",
+              "text": "#30243e",
+              "textSize": "14px",
+              "radius": "10px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "boundary"
+        },
+        "sampleNote": {
+          "compType": "text",
+          "comp": {
+            "text": "ILLUSTRATIVE APP · Change any component. Actions and data connections are not configured.",
+            "autoHeight": "fixed",
+            "type": "markdown",
+            "horizontalAlignment": "left",
+            "contentScrollBar": true,
+            "verticalAlignment": "center",
+            "style": {
+              "margin": "2px",
+              "padding": "5px",
+              "text": "#776c80",
+              "textSize": "12px",
+              "radius": "10px",
+              "lineHeight": "22px"
+            },
+            "margin": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "padding": {
+              "left": "",
+              "right": "",
+              "top": "",
+              "bottom": ""
+            },
+            "showDataLoadingIndicators": false,
+            "preventStyleOverwriting": false,
+            "appliedThemeId": "",
+            "version": "latest"
+          },
+          "name": "sampleNote"
+        }
+      }
+    },
+    "refTree": {
+      "value": ""
+    },
+    "hooks": [],
+    "settings": {
+      "title": "Maintenance control",
+      "description": "",
+      "category": "Business",
+      "showHeaderInPublic": false,
+      "themeId": "default",
+      "preventAppStylesOverwriting": true,
+      "disableCollision": false,
+      "lowcoderCompVersion": "latest",
+      "maxWidth": {
+        "dropdown": "1920",
+        "input": 0
+      },
+      "gridRowCount": "Infinity",
+      "gridPaddingX": "16",
+      "gridPaddingY": "12"
+    },
+    "preload": {
+      "script": "",
+      "css": "",
+      "globalCSS": ""
+    }
+  }
+}
