@@ -1,21 +1,27 @@
 # GristBlocks — État du développement
 
-**Mise à jour :** 8 novembre 2026  
-**État :** P4.3 validé en test ; reprise prévue à P4.4
+**Mise à jour documentaire : 11 novembre 2026**
+**Dernier jalon local confirmé : P5.3.2, commit `641a948` (non poussé)**
 
-> Ce document suit les étapes validées dans l'environnement de développement. Le runtime et les modules `src/gristblocks/` sont encore développés dans le dépôt Lowcoder local ; leur présence dans ce dépôt GitHub n'est pas impliquée par ce récapitulatif.
+> **Attention à la provenance :** ce document décrit aussi des validations effectuées dans le dépôt de développement **Lowcoder local**, sur la branche `gristblocks/p1-runtime-sync`. Il ne constitue pas une preuve que le code correspondant se trouve sur la branche `main` du dépôt public `traker/gristblocks`. Au moment de la revue documentaire, ce dépôt public contient essentiellement sa documentation et sa licence.
 
-## Objectif
+## Objectif et architecture
 
-Exécuter un DSL JSON Lowcoder dans un widget Grist, sans serveur Lowcoder.
+Construire et exécuter des interfaces métier pour Grist avec un Studio visuel et un runtime Lowcoder standalone, **sans serveur Lowcoder**.
 
-- **Grist** : données, permissions, persistance.
-- **Lowcoder** : interface React, composants, expressions réactives.
-- **GristBlocks** : bridge générique entre Grist et Lowcoder.
+```text
+Grist (tables / colonnes / formules / permissions / persistance)
+             ↕
+GristBlocks bridge (mapping / bindings / actions)
+             ↕
+Lowcoder standalone (DSL / composants / réactivité)
+             ↑
+GristBlocks Studio (édition visuelle du DSL)
+```
 
-La table `Projects` et l'application de maintenance constituent un démonstrateur, pas une dépendance cible du bridge.
+Le Studio et le Runtime ont des responsabilités distinctes. Le démonstrateur de maintenance utilisant `Projects` sert aux tests et ne doit pas imposer de logique métier au bridge générique.
 
-## Étapes validées
+## Historique des validations
 
 ### P1 — Runtime et lecture
 
@@ -38,66 +44,79 @@ La table `Projects` et l'application de maintenance constituent un démonstrateu
 - Tests réussis sur `ndevis` (chaîne) et `actif` (booléen), séparément et ensemble.
 - Propagation des mises à jour observée entre deux instances du widget.
 
-### P4.1 — Mapping déclaratif de lecture
+### P4 — Configuration déclarative du démonstrateur
 
-**Module :** `src/gristblocks/columnMapping.ts`
+- **P4.1** : `src/gristblocks/columnMapping.ts` — `mapColumns()`, correspondances de colonnes et `booleanLabels`.
+- **P4.2** : `src/gristblocks/recordActions.ts` — `buildUpdateRecordAction()`, validation de la table, de l'ID et des champs.
+- **P4.3** : `src/gristblocks/writeBindings.ts` — bindings d'écriture, transformations `booleanFromLabels`, tests de synchronisation.
+- **P4.5.1** : séparation de la configuration métier dans un module TypeScript, **validée par build et test**, selon le cadrage produit du 9 novembre 2026.
 
-- `mapColumns()` : correspondance configurable source → cible.
-- Transformation `booleanLabels` pour l'affichage.
-- Table, sélection et champs réactifs validés après intégration.
+**Traçabilité à compléter :** les commits et validations détaillés de P4.4 et des éventuelles étapes intermédiaires ne sont pas établis par les documents publics consultés. Ne pas les déclarer terminés sans vérification de l'historique local.
 
-### P4.2 — Construction générique d'actions
+### P5.1 — Audit du builder Lowcoder
 
-**Module :** `src/gristblocks/recordActions.ts`
+- Exploration des mécanismes frontend natifs et de leurs dépendances au serveur.
+- Choix d'un Studio léger réutilisant le DSL, les composants et les actions Lowcoder plutôt que de reproduire le builder complet.
 
-- `buildUpdateRecordAction()` construit une action `UpdateRecord`.
-- Vérification de la table, de l'identifiant et de la présence de champs.
-- Écritures réelles validées.
+### P5.2 — Studio autonome et premier Input
 
-### P4.3 — Bindings déclaratifs d'écriture
+- Création du Studio autonome, `DslStore` et `LowcoderPreview`.
+- Rendu d'un Input natif et édition de son libellé par les actions du modèle Lowcoder.
+- Déplacement et redimensionnement avec synchronisation du layout dans le DSL.
+- Conservation des modifications après plusieurs actions.
+- Commit local de référence pour le Studio : `43b8f3a` (d'après l'historique de développement transmis).
 
-**Module :** `src/gristblocks/writeBindings.ts`
+### P5.3.1 — Ajout natif d'un Button
 
-- Configuration colonne Grist → composant et propriété Lowcoder.
-- `transformWriteValue()` : conversion `booleanFromLabels`, avec erreur si valeur invalide.
-- `resolveWriteFields()` : lecture des valeurs courantes et résolution des champs.
-- Tests validés : chaîne, booléen, écriture mono-/multichamp et synchronisation.
-- Validation et confirmation conservées avant écriture.
+- `DslStore.addButton()` utilise `simpleContainerAddAction` et `defaultLayout`.
+- Ajout atomique dans `ui.items` et `ui.layout` sans mutation directe du DSL.
+- Commit local : `dffcc0c`.
 
-## Architecture en cours
+### P5.3.2 — Plusieurs composants et placement stable
 
-```text
-Grist (onRecords / fetchTable / applyUserActions)
-             ↕
-GristBlocks (mapping / bindings / actions)
-             ↕
-Lowcoder standalone (DSL JSON / UI / réactivité)
-```
+- Ajout de Buttons avec noms uniques (`submitButton`, `submitButton2`, etc.).
+- Commande temporaire « Ajouter un Button » dans le Studio.
+- Input et Buttons visibles simultanément et déplaçables via le mécanisme natif Lowcoder.
+- Placement côte à côte, sans chevauchement persistant observé dans le DSL.
+- Retrait de règles CSS perturbant le drag (`min-height: 50px` et `top: 0; left: 0`) ; maintien du positionnement relatif du wrapper.
+- Ajustement initial des hauteurs observé, suivi de dimensions stables durant les déplacements testés ; ne pas présenter cette observation comme une garantie pour tous les composants.
+- **Validation locale : 29 tests / 6 suites réussis, build réussi, `git diff --check` propre.**
+- **Commit local : `641a948f8f0e3800e903c70a7f03aaeef2456f67`**, branche `gristblocks/p1-runtime-sync`, **non poussé** au moment du compte rendu.
 
-Le démonstrateur est actuellement intégré au dépôt de développement Lowcoder, notamment dans `src/gristblocks-test.tsx`. Les modules génériques sont développés sous `src/gristblocks/` dans cet environnement.
+## Ce qui reste à réaliser dans le Studio
+
+Les capacités du démonstrateur Runtime ne doivent pas être confondues avec des fonctionnalités configurables dans le Studio :
+
+- Sélection native exploitable d'un Input ou Button dans le canvas et inspecteur contextuel multi-composants.
+- Sélection visuelle d'une table et d'une colonne Grist.
+- Génération et édition visuelle des bindings Grist.
+- Propriétés et actions essentielles du Button, puis ajout de Table.
+- Enregistrement et rechargement des interfaces, bindings et métadonnées dans Grist.
+- Réédition, duplication et templates.
+- Contrôles de sécurité du DSL chargé : empêcher les scripts utilisateur et les requêtes externes configurables, y compris lorsqu'un DSL est modifié ou importé.
+
+## Proposition de suite — à valider
+
+| Étape proposée | Objectif | Statut |
+| --- | --- | --- |
+| P5.3.3 | Sélection native Input/Button dans le Studio | Proposition, non commencée |
+| P5.3.4 | Inspecteur contextuel du composant sélectionné | Proposition, non commencée |
+| Étape à numéroter | Sélecteurs visuels table/colonne Grist et bindings | Objectif produit initial P5.3, non réalisé dans le Studio |
+| Étapes ultérieures | Actions, Table, persistance Grist, réédition et templates | À cadrer |
+
+L'ordre ci-dessus est une **proposition de plan**, pas une décision déjà validée. Avant toute nouvelle implémentation, confirmer le périmètre de la prochaine étape.
 
 ## Limites et points de vigilance
 
-- La configuration est encore déclarée dans le code du démonstrateur, non chargée depuis un fichier externe.
-- Un second DSL et une autre table Grist n'ont pas encore été validés.
-- Les écritures peuvent réécrire des champs configurés même s'ils n'ont pas été modifiés.
-- Pas de gestion spécifique des conflits d'écriture concurrents.
-- Les propriétés exposées autres que `value` restent à valider pour l'écriture.
-- Les valeurs nulles et les conversions de types nécessitent une politique plus générale.
+- La configuration du démonstrateur reste distincte de la configuration visuelle future du Studio.
+- Un second DSL et une autre table Grist n'ont pas été confirmés comme validés par les documents publics examinés.
+- Les écritures peuvent réécrire des champs configurés même s'ils n'ont pas été modifiés ; les conflits concurrents et la politique des valeurs nulles restent à étudier.
+- Un écart visuel résiduel entre hauteur du contenu et hauteur allouée par la grille a été documenté après P5.3.2, sans corruption du DSL observée.
+- Les tests Jest ont présenté un pic mémoire local élevé (~15 Go). Son origine exacte nécessite un profilage avant toute affirmation définitive ; ce sujet n'a pas bloqué la validation de P5.3.2.
+- La comparaison en navigateur avec le builder Lowcoder complet n'a pas été effectuée lors des diagnostics de drag.
 
-## Reprise — P4.4 : configuration globale
+## Méthode et disponibilité du code
 
-Regrouper dans une configuration cohérente :
+**Une modification → tests → validation utilisateur → commit.** Pas de push sans autorisation.
 
-1. La table Grist source et le composant Lowcoder cible.
-2. Les mappings de lecture et leurs transformations.
-3. Les bindings d'écriture et leurs transformations.
-4. Les événements qui déclenchent les actions.
-
-**Critère de réussite à terme :** exécuter un autre DSL Lowcoder avec une autre table Grist sans modifier le code générique du bridge.
-
-## Méthode
-
-**Une modification → un test → une validation → un commit.**
-
-Éviter d'introduire des règles propres à l'application de maintenance dans les modules génériques.
+Le code P5 décrit ici appartient à l'environnement de développement Lowcoder local. La documentation publiée dans `traker/gristblocks` ne doit pas être interprétée comme une publication du code ou d'une version installable de GristBlocks.

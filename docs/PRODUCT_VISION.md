@@ -1,6 +1,7 @@
 # GristBlocks — Vision produit et périmètre
 
 **Décision de cadrage : 9 novembre 2026**
+**Revue documentaire : 11 novembre 2026**
 
 ## Vision
 
@@ -60,18 +61,26 @@ Prendre le builder Lowcoder comme **référence** et réutiliser ses mécanismes
 
 Si une fonction du builder dépend trop du backend, implémenter seulement la fonction minimale nécessaire dans le Studio. Ne pas réécrire le moteur de rendu.
 
-## Jalons proposés
+## Jalons : cadrage initial et progression
 
-| Jalon | Objectif |
+Les jalons du 9 novembre 2026 décrivaient une **direction de travail**, non une liste de fonctionnalités déjà réalisées :
+
+| Jalon initial | Objectif initial |
 | --- | --- |
-| P5.1 | Explorer le code frontend du builder Lowcoder et ses dépendances serveur, sans modifier le runtime fonctionnel. |
+| P5.1 | Explorer le frontend du builder Lowcoder et ses dépendances serveur. |
 | P5.2 | Ajouter un premier Input éditable (création, sélection, libellé, aperçu). |
-| P5.3 | Sélectionner visuellement une table et une colonne Grist pour lier cet Input. |
+| P5.3 | Sélectionner visuellement une table et une colonne Grist pour lier l'Input. |
 | P5.4 | Étendre à Button et Table avec propriétés et actions essentielles. |
 | P5.5 | Enregistrer et recharger DSL, bindings et métadonnées depuis une table Grist. |
-| Suite | Réédition, duplication, templates, amélioration de la mise en page et nouveaux composants. |
+| Suite | Réédition, duplication, templates, mise en page et nouveaux composants. |
 
-Ces jalons sont une **direction de travail**, pas des fonctionnalités déjà réalisées. L'externalisation d'un JSON de configuration (ancien P4.5.2) n'est plus la priorité produit immédiate.
+**Évolution du séquencement :** le développement local a introduit un Button natif et stabilisé le placement de plusieurs composants avant de réaliser la sélection visuelle table/colonne Grist. Les numéros P5.3.1 et P5.3.2 désignent ces étapes locales validées ; ils ne signifient pas que l'objectif initial de liaison Grist de P5.3 est terminé.
+
+Les prochaines sous-étapes **proposées, non encore approuvées**, sont la sélection native Input/Button (P5.3.3) puis un inspecteur contextuel (P5.3.4), avant les sélecteurs de table/colonne et les bindings visuels Grist. Les étapes ultérieures (actions, persistance, réédition, templates) restent à détailler après validation de leurs dépendances.
+
+Pour l'état des réalisations et les références de commits, consulter [DEVELOPMENT_STATUS.md](DEVELOPMENT_STATUS.md).
+
+L'externalisation d'un JSON de configuration (ancien P4.5.2) n'est pas la priorité produit immédiate.
 
 ## État de départ et méthode
 
